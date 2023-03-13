@@ -29,6 +29,8 @@ if(CMAKE_MAJOR_VERSION GREATER 2)
   endif()
 endif()
 
+add_subdirectory(ahash-cxx)
+
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE
       "Release"
@@ -716,7 +718,7 @@ add_library(
   ${UMASH_SRC}
   ${KHASHV_SRC}
   )
-
+target_link_libraries(SMHasherSupport AHashCxx)
 add_executable(SMHasher main.cpp)
 
 if(ipo_supported)

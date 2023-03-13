@@ -39,6 +39,7 @@
 #include "vmac.h"
 
 #include "tabulation.h"
+#include <ahash-cxx/ahash-cxx.h>
 
 //----------
 // These are _not_ hash functions (even though people tend to use crc32 as one...)

@@ -38,3 +38,6 @@ prof.h
 /blake3/test_vectors.json
 
 *.swp
+
+.idea
+cmake-build-*
