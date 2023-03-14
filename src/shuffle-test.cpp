@@ -171,6 +171,7 @@ int main(int argc, const char **argv) {
     ASSERT(test_shuffle_moves_every_value(VectorOperator::shuffle_mask()));
     ASSERT(test_shuffle_does_not_loop(VectorOperator::shuffle_mask()));
     ASSERT(test_shuffle_moves_high_bits(VectorOperator::shuffle_mask()));
+#if AHASH_CXX_HAS_BASIC_SIMD_ACCELERATION
     std::array<uint8_t, 16> data = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
     std::random_device dev;
     std::default_random_engine engine(dev());
@@ -192,4 +193,5 @@ int main(int argc, const char **argv) {
             }
         }
     }
+#endif
 }
