@@ -1,0 +1,12 @@
+# IDE
+.cache
+.idea
+.vscode
+
+# Build
+build
+cmake-build-*
+
+# Profile
+perf.data*
+flamegraph.svg*
