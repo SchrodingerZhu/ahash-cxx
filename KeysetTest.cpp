@@ -141,6 +141,11 @@ bool SanityTest ( pfHash hash, const int hashbits )
 
           if(memcmp(hash1,hash2,hashbytes) == 0)
             {
+              std::cout << "len: " << len << std::endl;
+              std::cout << "key1: " << *(uint64_t*)(key1) << std::endl;
+              std::cout << "key2: " << *(uint64_t*)(key2) << std::endl;
+              std::cout << "hash1: " << *(uint64_t*)(hash1) << std::endl;
+              std::cout << "hash2: " << *(uint64_t*)(hash2) << std::endl;
               for(int i=0; i < hashbytes; i++){
                 if (hash1[i] == hash2[i]) {
                   printf(" %d: 0x%02X == 0x%02X ", i, hash1[i], hash2[i]);

@@ -42,7 +42,7 @@
 #define PMPML_MSC_32_WORKAROUND	// enables MSVC-specific code that appears to be more efficient than a regular one; comment out, if not desired
 #else // _MSC_VER
 #if (defined __arm__ || defined __aarch64__)
-#define PMPML_CHUNK_OPTIMIZATION_TYPE 1 // 1 is recommended
+#define PMPML_CHUNK_OPTIMIZATION_TYPE 2 // 1 is recommended
 #else // __arm__
 #ifdef __INTEL_COMPILER
 #define PMPML_CHUNK_OPTIMIZATION_TYPE 1 // add64 function fails to build on some Intel compilers

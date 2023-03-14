@@ -12,7 +12,6 @@ if(POLICY CMP0066) # honor per-config flags in try_compile() source-file
 endif()
 
 project(SMHasher C CXX ASM)
-
 include(CheckCCompilerFlag)
 # Check if the same compile family is used for both C and CXX
 if(NOT (CMAKE_C_COMPILER_ID STREQUAL CMAKE_CXX_COMPILER_ID))
@@ -90,25 +89,25 @@ if(NOT CMAKE_CROSSCOMPILING)
     string(REGEX REPLACE "^.* (avx512vl) .*$" "\\1" AVX512VL_THERE ${CPUINFO})
     string(COMPARE EQUAL "avx512vl" "${AVX512VL_THERE}" AVX512VL_TRUE)
   elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-    exec_program("/usr/sbin/sysctl -n machdep.cpu.features" OUTPUT_VARIABLE
+    execute_process(COMMAND "/usr/sbin/sysctl" -n machdep.cpu.features OUTPUT_VARIABLE
                  CPUINFO)
-    string(REGEX REPLACE "^.*[^S](SSE2).*$" "\\1" SSE_THERE ${CPUINFO})
+    string(REGEX REPLACE "^.*[^S](SSE2).*$" "\\1" SSE_THERE "${CPUINFO}")
     string(COMPARE EQUAL "SSE2" "${SSE_THERE}" SSE2_TRUE)
-    string(REGEX REPLACE "^.*(SSE4.2).*$" "\\1" SSE_THERE ${CPUINFO})
+    string(REGEX REPLACE "^.*(SSE4.2).*$" "\\1" SSE_THERE "${CPUINFO}")
     string(COMPARE EQUAL "SSE4.2" "${SSE_THERE}" SSE42_TRUE)
     set(FALKHASH_OBJ falkhash-macho64.o)
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
       set(FHTW_OBJ fhtw-macho64.o)
     endif()
-    string(REGEX REPLACE "^.*(AES).*$" "\\1" AES_THERE ${CPUINFO})
+    string(REGEX REPLACE "^.*(AES).*$" "\\1" AES_THERE "${CPUINFO}")
     string(COMPARE EQUAL "AES" "${AES_THERE}" AES_TRUE)
-    string(REGEX REPLACE "^.*(SHA).*$" "\\1" SHA_THERE ${CPUINFO})
+    string(REGEX REPLACE "^.*(SHA).*$" "\\1" SHA_THERE "${CPUINFO}")
     string(COMPARE EQUAL "SHA" "${SHA_THERE}" SHA_TRUE)
-    string(REGEX REPLACE "^.*(PCLMUL).*$" "\\1" CLMUL_THERE ${CPUINFO})
+    string(REGEX REPLACE "^.*(PCLMUL).*$" "\\1" CLMUL_THERE "${CPUINFO}")
     string(COMPARE EQUAL "PCLMUL" "${CLMUL_THERE}" CLMUL_TRUE)
-    string(REGEX REPLACE "^.* (AVX2) .*$" "\\1" AVX2_THERE ${CPUINFO})
+    string(REGEX REPLACE "^.* (AVX2) .*$" "\\1" AVX2_THERE "${CPUINFO}")
     string(COMPARE EQUAL "AVX2" "${AVX2_THERE}" AVX2_TRUE)
-    string(REGEX REPLACE "^.* (AVX512) .*$" "\\1" AVX512_THERE ${CPUINFO})
+    string(REGEX REPLACE "^.* (AVX512) .*$" "\\1" AVX512_THERE "${CPUINFO}")
     string(COMPARE EQUAL "AVX512" "${AVX512_THERE}" AVX512_TRUE)
   elseif(CMAKE_SYSTEM_NAME MATCHES "FreeBSD")
     exec_program("grep Features /var/run/dmesg.boot" OUTPUT_VARIABLE CPUINFO)
@@ -232,7 +231,7 @@ if(CMAKE_COMPILER_IS_GNUCC
   # ENDIF (SHA_TRUE)
   if(NOT CMAKE_CROSSCOMPILING)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -march=native")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
   endif()
   set_source_files_properties(blake3/blake3.c
                               PROPERTIES COMPILE_FLAGS "-std=c99")
@@ -517,11 +516,11 @@ endif()
 
 if(NOT MSVC)
   set(NOTMSVC_SRC seahash.c)
-  set_source_files_properties(HashMapTest.cpp PROPERTIES COMPILE_FLAGS "-std=c++11")
-  set_source_files_properties(SpeedTest.cpp PROPERTIES COMPILE_FLAGS "-std=c++11 -I${CMAKE_SOURCE_DIR}")
-  set_source_files_properties(main.cpp PROPERTIES COMPILE_FLAGS "-std=c++0x")
-  set_source_files_properties(bittest.cpp PROPERTIES COMPILE_FLAGS "-std=c++0x")
-  set_source_files_properties(Hashes.cpp PROPERTIES COMPILE_FLAGS "-std=c++1y -I${CMAKE_SOURCE_DIR} -flax-vector-conversions")
+  set_source_files_properties(HashMapTest.cpp PROPERTIES COMPILE_FLAGS "-std=gnu++11")
+  set_source_files_properties(SpeedTest.cpp PROPERTIES COMPILE_FLAGS "-std=gnu++11 -I${CMAKE_SOURCE_DIR}")
+  set_source_files_properties(main.cpp PROPERTIES COMPILE_FLAGS "-std=gnu++11")
+  set_source_files_properties(bittest.cpp PROPERTIES COMPILE_FLAGS "-std=gnu++11")
+  set_source_files_properties(Hashes.cpp PROPERTIES COMPILE_FLAGS "-std=gnu++11 -I${CMAKE_SOURCE_DIR} -flax-vector-conversions")
   #
   add_source_file_definitions("DifferentialTest.cpp" "__STDC_FORMAT_MACROS")
   add_source_file_definitions("KeysetTest.cpp" "__STDC_FORMAT_MACROS")
@@ -718,6 +717,7 @@ add_library(
   ${UMASH_SRC}
   ${KHASHV_SRC}
   )
+
 target_link_libraries(SMHasherSupport AHashCxx)
 add_executable(SMHasher main.cpp)
 
