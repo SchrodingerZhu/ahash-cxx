@@ -1,9 +1,7 @@
-#ifndef AHASH_CXX_ARCH_VAES_H
-#define AHASH_CXX_ARCH_VAES_H
-#ifdef __VAES__
-#define AHASH_CXX_HAS_VAES_ACCELERATION
-#include <immintrin.h>
-#include <ahash-cxx/common.h>
+#pragma once
+#include <ahash-cxx/arch/config.h>
+#if AHASH_CXX_HAS_VAES_ACCELERATION
+#  include <ahash-cxx/common.h>
 namespace ahash
 {
 namespace vaes
@@ -49,6 +47,7 @@ struct AHashArch
       array[0] = _mm256_extracti128_si256 (data, 0);
       array[1] = _mm256_extracti128_si256 (data, 1);
     }
+
   private:
     AesType (__m256i data) // NOLINT(google-explicit-constructor)
         : data (data)
@@ -60,4 +59,3 @@ struct AHashArch
 } // namespace vaes
 } // namespace ahash
 #endif
-#endif // AHASH_CXX_ARCH_VAES_H

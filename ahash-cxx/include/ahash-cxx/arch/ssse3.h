@@ -1,8 +1,7 @@
-#ifndef AHASH_CXX_ARCH_SSSE3_H
-#define AHASH_CXX_ARCH_SSSE3_H
-#include <immintrin.h>
-#include <arm_sve.h>
-#include <ahash-cxx/common.h>
+#pragma once
+#include <ahash-cxx/arch/config.h>
+#if AHASH_CXX_HAS_SSSE3_ACCELERATION
+#  include <ahash-cxx/common.h>
 namespace ahash
 {
 namespace ssse3
@@ -50,4 +49,4 @@ struct AHashArch
 };
 } // namespace vaes
 } // namespace ahash
-#endif // AHASH_CXX_ARCH_SSSE3_H
+#endif
