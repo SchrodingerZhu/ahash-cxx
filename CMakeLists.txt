@@ -1,4 +1,5 @@
 project(AHashCxx LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.20)
 add_library(AHashCxx STATIC src/ahash-cxx.cpp)
 set_property(TARGET AHashCxx PROPERTY CXX_STANDARD 17)
 target_include_directories(AHashCxx PUBLIC
