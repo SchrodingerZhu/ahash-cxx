@@ -19,6 +19,7 @@ function(ahash_cxx_add_test TEST_NAME TEST_FILE)
 endfunction()
 
 if (AHASH_CXX_ENABLE_TESTS)
+    enable_testing()
     ahash_cxx_add_test(AHashCxxShuffleTest shuffle-test.cpp)
     ahash_cxx_add_test(AHashCxxExtraInfoTest extra-info-test.cpp)
     ahash_cxx_add_test(AHashCxxStabilityTest stability-test.cpp)
