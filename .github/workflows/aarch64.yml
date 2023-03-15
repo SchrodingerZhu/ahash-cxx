@@ -42,11 +42,11 @@ jobs:
           githubToken: ${{ github.token }}
           install: |
             apt-get update -q -y
-            apt-get install -q -y cmake clang-14 build-essential
+            apt-get install -q -y cmake clang-15 build-essential
           run: |
             mkdir build 
             cd build
-            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }} -DCMAKE_CXX_COMPILER=clang++-14
+            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }} -DCMAKE_CXX_COMPILER=clang++-15
             cmake --build .
             ctest
 
