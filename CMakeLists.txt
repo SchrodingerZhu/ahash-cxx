@@ -12,4 +12,11 @@ set_property(TARGET AHashCxxShuffleTest PROPERTY CXX_STANDARD 17)
 target_include_directories(AHashCxxShuffleTest PRIVATE
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
+)
+
+add_executable(AHashCxxExtraInfoTest src/extra-info-test.cpp)
+set_property(TARGET AHashCxxExtraInfoTest PROPERTY CXX_STANDARD 17)
+target_include_directories(AHashCxxExtraInfoTest PRIVATE
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
         )

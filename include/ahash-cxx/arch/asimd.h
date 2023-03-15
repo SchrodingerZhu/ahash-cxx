@@ -44,7 +44,8 @@ struct VectorOperator
   AHASH_CXX_ALWAYS_INLINE static VecType
   add_by_64s (VecType x, VecType y)
   {
-    return vaddq_u8 (x, y);
+    return vreinterpretq_u8_u64(
+            vaddq_u64(vreinterpretq_u64_u8(x), vreinterpretq_u64_u8(y)));
   }
 
   AHASH_CXX_ALWAYS_INLINE static VecType
@@ -74,7 +75,8 @@ struct VectorOperator
   AHASH_CXX_ALWAYS_INLINE static VecType
   add_extra_data (VecType x, uint64_t info)
   {
-    return add_by_64s (x, from_u64x2 (info, 0));
+    const auto delta = from_u64x2 (info, 0);
+    return add_by_64s (x, delta);
   }
 
   AHASH_CXX_ALWAYS_INLINE
