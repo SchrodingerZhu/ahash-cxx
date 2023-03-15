@@ -9,7 +9,7 @@ on:
 jobs:
   build_job:
     # The host should always be linux
-    runs-on: ubuntu-latest
+    runs-on: ubuntu_latest
     name: Build on AArch64 Generic
 
     steps:
