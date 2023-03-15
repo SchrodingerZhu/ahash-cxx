@@ -5,6 +5,7 @@
 #include <ahash-cxx/arch/ssse3.h>
 #include <ahash-cxx/arch/sve.h>
 #include <ahash-cxx/arch/asimd.h>
+#include <ahash-cxx/common.h>
 
 namespace ahash {
 #if AHASH_CXX_HAS_BASIC_SIMD_ACCELERATION

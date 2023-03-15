@@ -14,7 +14,7 @@ struct OffsetArray {
     }
 
     ~OffsetArray() {
-        ::operator delete(base - offset, length + offset, std::align_val_t{2048});
+        ::operator delete(base - offset, std::align_val_t{2048});
     }
 };
 
