@@ -7,16 +7,16 @@ target_include_directories(AHashCxx PUBLIC
         $<INSTALL_INTERFACE:include>
         )
 
-add_executable(AHashCxxShuffleTest src/shuffle-test.cpp)
-set_property(TARGET AHashCxxShuffleTest PROPERTY CXX_STANDARD 17)
-target_include_directories(AHashCxxShuffleTest PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-        )
+function(ahash_cxx_add_test TEST_NAME TEST_FILE)
+    add_executable(${TEST_NAME} src/${TEST_FILE})
+    set_property(TARGET ${TEST_NAME} PROPERTY CXX_STANDARD 17)
+    target_include_directories(${TEST_NAME} PRIVATE
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:include>
+            )
+    add_test(${TEST_NAME} ${TEST_NAME})
+endfunction()
 
-add_executable(AHashCxxExtraInfoTest src/extra-info-test.cpp)
-set_property(TARGET AHashCxxExtraInfoTest PROPERTY CXX_STANDARD 17)
-target_include_directories(AHashCxxExtraInfoTest PRIVATE
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-        )
+ahash_cxx_add_test(AHashShuffleTest shuffle-test.cpp)
+ahash_cxx_add_test(AHashCxxExtraInfoTest extra-info-test.cpp)
+ahash_cxx_add_test(AHashStabilityTest stability-test.cpp)

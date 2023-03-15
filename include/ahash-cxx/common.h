@@ -64,8 +64,7 @@ namespace ahash {
                                     generic_load<uint32_t>(&data[length - 4]))};
                 else
                     return {static_cast<uint64_t> (generic_load<uint16_t>(&data[0])),
-                            static_cast<uint64_t> (
-                                    generic_load<uint16_t>(&data[length - 1]))};
+                            static_cast<uint64_t> (data[length - 1])};
             } else {
                 if (length > 0)
                     return {static_cast<uint64_t> (data[0]),
