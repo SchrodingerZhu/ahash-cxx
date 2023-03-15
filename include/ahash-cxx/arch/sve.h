@@ -72,7 +72,7 @@ struct VectorOperator
   AHASH_CXX_ALWAYS_INLINE static VecType
   add_by_64s (VecType x, VecType y)
   {
-    return svadd_u8_x (svptrue_b8 (), x, y);
+    return svreinterpret_u8_u64(svadd_u64_x(svptrue_b8 (), svreinterpret_u64_u8(x), svreinterpret_u64_u8(y)));
   }
 
   AHASH_CXX_ALWAYS_INLINE static VecType
