@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace ahash;
 int main() {
-#if AHASH_CXX_HAS_BASIC_SIMD_ACCELERATION && defined(__LITTLE_ENDIAN__)
+#if AHASH_CXX_HAS_BASIC_SIMD_ACCELERATION
     union {
         unsigned __int128 data = std::numeric_limits<uint64_t>::max();
         VectorOperator::VecType vector;
