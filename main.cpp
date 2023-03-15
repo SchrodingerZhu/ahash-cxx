@@ -128,6 +128,7 @@ HashInfo g_hashes[] =
 #  define SHA1_64_VERIF         0x995397D5
  #endif
       { ahashcxx,            64, 0x0198AE44, "ahash-cxx",     "Ahash CXX", GOOD},
+  { ahashcxx_fallback,            64, 0x0198AE44, "ahash-cxx-fallback",     "Ahash CXX Fallback", GOOD},
   { sha1_160,            160, SHA1_VERIF, "sha1-160",     "SHA1", GOOD},
   { sha1_32,              32, SHA1_32_VERIF,"sha1_32",    "SHA1, low 32 bits", GOOD},
   { sha1_64,              64, SHA1_64_VERIF,"sha1_64",    "SHA1, low 64 bits", GOOD},

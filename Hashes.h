@@ -388,6 +388,12 @@ ahashcxx (const void *key, int len, uint32_t seed, void *out)
   *(uint64_t *)out = ahash::hash (key, len, seed);
 }
 
+inline void
+ahashcxx_fallback (const void *key, int len, uint32_t seed, void *out)
+{
+    *(uint64_t *)out = ahash::fallback_hash (key, len, seed);
+}
+
 #if __WORDSIZE >= 64
 inline void
 MurmurHash64A_test (const void *key, int len, uint32_t seed, void *out)
