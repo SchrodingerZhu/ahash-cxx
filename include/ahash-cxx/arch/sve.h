@@ -66,7 +66,7 @@ struct VectorOperator
   AHASH_CXX_ALWAYS_INLINE static VecType
   encode (VecType x, VecType y)
   {
-    return sveor_u8_x(svptrue_b8 (), svaesmc_u8 (svaese_u8 (x, svuint8_t {})), y);
+    return sveor_u8_x(svptrue_b8 (), svaesmc_u8 (svaese_u8 (x, svdup_n_u8(0))), y);
   }
 
   AHASH_CXX_ALWAYS_INLINE static VecType

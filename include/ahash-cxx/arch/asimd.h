@@ -32,13 +32,13 @@ struct VectorOperator
   AHASH_CXX_ALWAYS_INLINE static VecType
   encode (VecType x, VecType y)
   {
-    return vaesmcq_u8(vaeseq_u8(x, uint8x16_t{})) ^ y;
+    return vaesmcq_u8(vaeseq_u8(x, vdupq_n_u8(0))) ^ y;
   }
 
   AHASH_CXX_ALWAYS_INLINE static VecType
   decode (VecType x, VecType y)
   {
-    return vaesimcq_u8(vaesdq_u8(x, uint8x16_t{})) ^ y;
+    return vaesimcq_u8(vaesdq_u8(x, vdupq_n_u8(0))) ^ y;
   }
 
   AHASH_CXX_ALWAYS_INLINE static VecType
