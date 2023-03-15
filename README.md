@@ -24,5 +24,4 @@ The hash value is not stable across different platforms and may also vary with d
 
 ## What is missing?
 
-- The fallback hash is not yet implemented in this library.
 - `SVE2-AES` can not be tested properly. There is no accessible machine with `sve2-aes` for me and for now.
