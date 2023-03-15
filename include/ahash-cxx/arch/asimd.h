@@ -1,5 +1,7 @@
 #pragma once
+
 #include <ahash-cxx/arch/config.h>
+
 #if AHASH_CXX_HAS_ASIMD_ACCELERATION
 #  include <ahash-cxx/common.h>
 

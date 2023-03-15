@@ -11,7 +11,9 @@
 #endif
 
 #if __SSSE3__
+
 #  include <immintrin.h>
+
 #  define AHASH_CXX_HAS_SSSE3_ACCELERATION 1
 #endif
 
