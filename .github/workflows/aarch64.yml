@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: uraimo/run-on-arch-action@v2
-        name: Build artifact
+        name: Build MultiArch
         id: build
         with:
           arch: ${{ matrix.arch }}
@@ -46,7 +46,7 @@ jobs:
           run: |
             mkdir build 
             cd build
-            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }} -DCMAKE_CXX_COMPILER=clang++
+            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }} -DCMAKE_CXX_COMPILER=clang++-14
             cmake --build .
             ctest
 
