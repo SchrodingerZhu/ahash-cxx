@@ -10,7 +10,7 @@ jobs:
   build_job:
     # The host should always be linux
     runs-on: ubuntu-latest
-    name: Build on ${{ matrix.distro }} ${{ matrix.identifier }}
+    name: Build on ${{ matrix.arch }} ${{ matrix.identifier }}
 
     # Run steps on a matrix of 4 arch/distro combinations
     strategy:
@@ -19,17 +19,17 @@ jobs:
           - arch: aarch64
             distro: ubuntu_latest
             cmake_flags:
-            identifier: Generic
+            identifier: generic
 
           - arch: aarch64
             distro: ubuntu_latest
             cmake_flags: -DCMAKE_CXX_FLAGS="-march=armv8-a+aes"
-            identifier: ASIMD
+            identifier: asimd
 
           - arch: aarch64
             distro: ubuntu_latest
             cmake_flags: -DCMAKE_CXX_FLAGS="-march=armv9-a+aes+sve2-aes"
-            identifier: SVE2
+            identifier: sve2
 
     steps:
       - uses: actions/checkout@v3
@@ -42,11 +42,11 @@ jobs:
           githubToken: ${{ github.token }}
           install: |
             apt-get update -q -y
-            apt-get install -q -y cmake g++ build-essential
+            apt-get install -q -y cmake clang-14 build-essential
           run: |
             mkdir build 
             cd build
-            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }}
+            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }} -DCMAKE_CXX_COMPILER=clang++
             cmake --build .
             ctest
 
