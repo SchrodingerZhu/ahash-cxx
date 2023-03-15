@@ -6,6 +6,7 @@ target_include_directories(AHashCxx PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
         )
+option(AHASH_CXX_ENABLE_TESTS OFF)
 
 function(ahash_cxx_add_test TEST_NAME TEST_FILE)
     add_executable(${TEST_NAME} src/${TEST_FILE})
@@ -17,6 +18,8 @@ function(ahash_cxx_add_test TEST_NAME TEST_FILE)
     add_test(${TEST_NAME} ${TEST_NAME})
 endfunction()
 
-ahash_cxx_add_test(AHashShuffleTest shuffle-test.cpp)
-ahash_cxx_add_test(AHashCxxExtraInfoTest extra-info-test.cpp)
-ahash_cxx_add_test(AHashStabilityTest stability-test.cpp)
+if (AHASH_CXX_ENABLE_TESTS)
+    ahash_cxx_add_test(AHashCxxShuffleTest shuffle-test.cpp)
+    ahash_cxx_add_test(AHashCxxExtraInfoTest extra-info-test.cpp)
+    ahash_cxx_add_test(AHashCxxStabilityTest stability-test.cpp)
+endif()
