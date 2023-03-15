@@ -16,3 +16,6 @@
 [submodule "k-hashv"]
 	path = k-hashv
 	url = https://github.com/Keith-Cancel/k-hashv
+[submodule "ahash-cxx"]
+	path = ahash-cxx
+	url = https://github.com/SchrodingerZhu/ahash-cxx
