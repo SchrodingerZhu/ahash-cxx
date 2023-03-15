@@ -46,7 +46,7 @@ jobs:
           run: |
             mkdir build 
             cd build
-            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }} -DCMAKE_CXX_COMPILER=clang++-15
+            cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo ${{ matrix.cmake_flags }} -DAHASH_CXX_ENABLE_TESTS=ON -DCMAKE_CXX_COMPILER=clang++-15
             cmake --build .
             ctest
 
