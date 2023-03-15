@@ -41,7 +41,7 @@ namespace ahash {
             return bytes[i];
         }
 
-        [[nodiscard]] const uint8_t *
+        [[nodiscard]] const uint8_t * // NOLINT(google-runtime-operator)
         operator&() const {
             return bytes;
         }

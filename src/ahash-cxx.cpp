@@ -2,7 +2,7 @@
 #include <ahash-cxx/ahash-cxx.h>
 
 namespace ahash {
-    uint64_t
+    __attribute__((visibility("default"), used)) uint64_t
     hash(const void *buf, size_t len, uint64_t seed) {
         VectorizedHasher hasher{seed};
         hasher.consume(buf, len);

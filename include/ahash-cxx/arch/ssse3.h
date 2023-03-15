@@ -58,7 +58,7 @@ namespace ahash {
 
             AHASH_CXX_ALWAYS_INLINE static VecType
             from_u64x2(uint64_t a, uint64_t b) {
-                return _mm_set_epi64x(a, b);
+                return _mm_set_epi64x(static_cast<int64_t>(a), static_cast<int64_t>(b));
             }
 
             AHASH_CXX_ALWAYS_INLINE static VecType

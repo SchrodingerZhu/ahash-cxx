@@ -1,6 +1,6 @@
 ---
-BasedOnStyle:  LLVM
-Language:        Cpp
+BasedOnStyle: LLVM
+Language: Cpp
 AlignAfterOpenBracket: Align
 AlignEscapedNewlines: Left
 AlignTrailingComments: false
@@ -11,25 +11,25 @@ AllowShortEnumsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: Inline
 AllowShortLambdasOnASingleLine: Inline
 AlwaysBreakAfterReturnType: None
-AlwaysBreakTemplateDeclarations: true
+AlwaysBreakTemplateDeclarations: Yes
 BinPackArguments: false
 BinPackParameters: false
 BreakBeforeBraces: Custom
-BraceWrapping: 
-    AfterCaseLabel: true
-    AfterClass: true
-    AfterControlStatement: Always
-    AfterEnum : true
-    AfterFunction : true
-    AfterNamespace : true
-    AfterStruct : true
-    AfterUnion : true
-    BeforeCatch : true
-    BeforeElse : true
-    IndentBraces : false
-    SplitEmptyFunction: false
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: false
 BreakConstructorInitializers: BeforeComma
-BreakInheritanceList : BeforeComma
+BreakInheritanceList: BeforeComma
 ColumnLimit: 0
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 Cpp11BracedListStyle: true
@@ -53,22 +53,22 @@ UseTab: Never
 AccessModifierOffset: -4
 AlignConsecutiveAssignments: false
 AlignConsecutiveDeclarations: false
-AlignOperands:   false
+AlignOperands: false
 AllowShortCaseLabelsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakBeforeMultilineStrings: false
 BreakBeforeBinaryOperators: All
 BreakBeforeTernaryOperators: true
-CommentPragmas:  '^ IWYU pragma:'
+CommentPragmas: '^ IWYU pragma:'
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
 DerivePointerAlignment: false
-DisableFormat:   false
-ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
+DisableFormat: false
+ForEachMacros: [ foreach, Q_FOREACH, BOOST_FOREACH ]
 IndentWrappedFunctionNames: false
 MacroBlockBegin: ''
-MacroBlockEnd:   ''
+MacroBlockEnd: ''
 NamespaceIndentation: None
 ObjCBlockIndentWidth: 4
 ObjCSpaceAfterProperty: true
