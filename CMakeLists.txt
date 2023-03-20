@@ -764,3 +764,13 @@ INSTALL(TARGETS SMHasherSupport
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib)
 INSTALL(TARGETS SMHasher RUNTIME DESTINATION bin)
+
+file(GLOB CCLIB_SRC Project-CL/src/*.c)
+add_library(cl2 SHARED ${CCLIB_SRC})
+target_include_directories(cl2 PRIVATE Project-CL/include Project-CL/src/include Project-CL/config)
+if (APPLE AND CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
+  target_compile_options(cl2 PRIVATE -march=armv8-a+aes)
+else()
+  target_compile_options(cl2 PRIVATE -march=native)
+endif()
+target_link_libraries(SMHasherSupport cl2)

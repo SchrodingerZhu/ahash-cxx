@@ -394,6 +394,21 @@ ahashcxx_fallback (const void *key, int len, uint32_t seed, void *out)
     *(uint64_t *)out = ahash::fallback_hash (key, len, seed);
 }
 
+extern "C" uint64_t cc_stable_hash(const void * key, size_t len, uint64_t seed);
+extern "C" uint64_t cc_unstable_hash(const void * key, size_t len, uint64_t seed);
+
+namespace cclib {
+    inline void
+    unstable_hash(const void *key, int len, uint32_t seed, void *out) {
+        *(uint64_t *) out = cc_unstable_hash(key, len, seed);
+    }
+
+    inline void
+    stable_hash(const void *key, int len, uint32_t seed, void *out) {
+        *(uint64_t *) out = cc_stable_hash(key, len, seed);
+    }
+}
+
 #if __WORDSIZE >= 64
 inline void
 MurmurHash64A_test (const void *key, int len, uint32_t seed, void *out)

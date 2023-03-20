@@ -19,3 +19,6 @@
 [submodule "ahash-cxx"]
 	path = ahash-cxx
 	url = https://github.com/SchrodingerZhu/ahash-cxx
+[submodule "Project-CL"]
+	path = Project-CL
+	url = https://github.com/chuigda/Project-CL

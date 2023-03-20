@@ -129,6 +129,8 @@ HashInfo g_hashes[] =
  #endif
       { ahashcxx,            64, 0x0198AE44, "ahash-cxx",     "Ahash CXX", GOOD},
   { ahashcxx_fallback,            64, 0x0198AE44, "ahash-cxx-fallback",     "Ahash CXX Fallback", GOOD},
+  { cclib::unstable_hash,            64, 0xF9FBA303, "cc-unstable-hash",     "CCLib Unstable Hash", GOOD},
+  { cclib::stable_hash,            64, 0x43430575, "cc-stable-hash",     "CCLib Stable Hash", GOOD},
   { sha1_160,            160, SHA1_VERIF, "sha1-160",     "SHA1", GOOD},
   { sha1_32,              32, SHA1_32_VERIF,"sha1_32",    "SHA1, low 32 bits", GOOD},
   { sha1_64,              64, SHA1_64_VERIF,"sha1_64",    "SHA1, low 64 bits", GOOD},
